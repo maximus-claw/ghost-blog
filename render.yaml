@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ghost-blog
+    env: docker
+    plan: free
+    region: oregon
+    dockerContext: .
+    dockerCommand: ""
+    # Use official Ghost image
+    image: ghost:5-alpine
+    envVars:
+      - key: url
+        sync: false
+        placeholder: "https://your-site.onrender.com"
+      - key: database__client
+        value: sqlite3
+      - key: database__connection__filename
+        value: /var/lib/ghost/content/data/ghost.db
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: ghost-content
+      mountPath: /var/lib/ghost/content
+      sizeGB: 1
