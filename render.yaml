@@ -5,9 +5,7 @@ services:
     plan: free
     region: oregon
     dockerContext: .
-    dockerCommand: ""
-    # Use official Ghost image
-    image: ghost:5-alpine
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: url
         sync: false
